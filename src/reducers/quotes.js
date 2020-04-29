@@ -1,9 +1,12 @@
 export default (state = [], action) => {
   // let idx
+  debugger
   switch (action.type) {
+    
     case 'ADD_QUOTE':
-      return state.concat(action.quote)
+      return state.concat(action.quote);
     case 'REMOVE_QUOTE':
+      console.log('new', newState)
 
         // idx = state.findIndex(quoteObj => quoteObj.id === action.id);
         // const result = words.filter(word => word.length > 6);
@@ -11,6 +14,7 @@ export default (state = [], action) => {
         const newState = state.filter( quoteObj => quoteObj.id!==action.quoteId)
         return newState
       case 'UPVOTE_QUOTE':
+        console.log('upvote')
         const quoteObj =state.find(element => element.id===action.quoteId)
         console.log('quoteObj', quoteObj)
         console.log('action', action)
