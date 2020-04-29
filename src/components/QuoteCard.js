@@ -9,8 +9,7 @@ const QuoteCard = (props) =>
           {
   quote: { content: 'test quote', author: 'test author', votes: 0, id: 5 }
 } */}
-          <p>{props.quote.content}
-            votes: {props.quote.votes} </p>
+          <p>{props.quote.content} </p>
           
           <footer>- author <cite title="Source Title">{props.quote.author}</cite></footer>
         </blockquote>
@@ -36,7 +35,7 @@ const QuoteCard = (props) =>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        {/* <div>Votes: {Render Quote Votes}</div> */}
+        Votes: {props.quote.votes}
       </div>
     </div>
   </div>;

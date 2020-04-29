@@ -1,5 +1,5 @@
 export const addQuote = quote => {
-    console.log('quote', quote)
+    // console.log('quote', quote)
     return {
       type: 'ADD_QUOTE',
       quote: {...quote}
@@ -7,6 +7,7 @@ export const addQuote = quote => {
   };
 
   export const removeQuote = quoteId => {
+    console.log('quote', quoteId)
     return {
       type: 'REMOVE_QUOTE',
       quoteId
