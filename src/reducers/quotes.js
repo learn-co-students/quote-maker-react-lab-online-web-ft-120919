@@ -1,6 +1,6 @@
 export default (state = [], action) => {
   // let idx
-  debugger
+  // debugger
   switch (action.type) {
     
     case 'ADD_QUOTE':
