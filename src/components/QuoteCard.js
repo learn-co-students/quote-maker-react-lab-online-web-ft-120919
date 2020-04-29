@@ -1,6 +1,6 @@
 import React from 'react';
 
-const QuoteCard = (props) =>
+const QuoteCard = ({quote, upvoteQuote, downvoteQuote}) =>
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
@@ -9,9 +9,9 @@ const QuoteCard = (props) =>
           {
   quote: { content: 'test quote', author: 'test author', votes: 0, id: 5 }
 } */}
-          <p>{props.quote.content} </p>
+          <p>{quote.content} </p>
           
-          <footer>- author <cite title="Source Title">{props.quote.author}</cite></footer>
+          <footer>- author <cite title="Source Title">{quote.author}</cite></footer>
         </blockquote>
       </div>
       <div className="float-right">
@@ -19,12 +19,14 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-primary"
+            onClick={() => upvoteQuote(quote.quoteID)}
           >
             Upvote
           </button>
           <button
             type="button"
             className="btn btn-secondary"
+            onClick={() => downvoteQuote(quote.quoteID)}
           >
             Downvote
           </button>
@@ -35,7 +37,7 @@ const QuoteCard = (props) =>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        Votes: {props.quote.votes}
+        Votes: {quote.votes}
       </div>
     </div>
   </div>;

@@ -2,7 +2,7 @@ export const addQuote = quote => {
     // console.log('quote', quote)
     return {
       type: 'ADD_QUOTE',
-      quote: {...quote}
+      quote: Object.assign({}, quote, { votes: 0 })
     };
   };
 

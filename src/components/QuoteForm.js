@@ -21,6 +21,7 @@ class QuoteForm extends Component {
     
     const quote = {...this.state, id: uuid()}
     this.props.addQuote(quote)
+    console.log('q', quote)
     this.setState({
       content: '',
       author: '',
@@ -78,13 +79,13 @@ class QuoteForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addQuote: (quote) => {
-      dispatch(addQuote(quote))
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addQuote: (quote) => {
+//       dispatch(addQuote(quote))
+//     }
+//   }
+// }
 
-//add arguments to connect as needed
-export default connect(null, mapDispatchToProps)(QuoteForm);
+//add arguments to connect as 
+export default connect(null, { addQuote })(QuoteForm);

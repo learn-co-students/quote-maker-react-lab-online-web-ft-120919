@@ -1,5 +1,5 @@
 export default (state = [], action) => {
-  let idx
+  // let idx
   switch (action.type) {
     case 'ADD_QUOTE':
       return state.concat(action.quote)
