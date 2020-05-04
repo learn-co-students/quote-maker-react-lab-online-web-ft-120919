@@ -6,11 +6,11 @@ import { bindActionCreators } from 'redux'
 
 class Quotes extends Component {
  
-  renderQuotes = () => this.props.quotes.map((quote) => <QuoteCard 
+  renderQuotes = (props) => this.props.quotes.map((quote) => <QuoteCard 
     key={quote.id}
-    upvoteQuote={upvoteQuote} 
-    downvoteQuote={downvoteQuote} 
-    removeQuote={removeQuote} 
+    upvoteQuote={props.upvoteQuote} 
+    downvoteQuote={props.downvoteQuote} 
+    removeQuote={props.removeQuote} 
     quote={{content: quote.content, author: quote.author, votes: quote.votes, id: quote.id}} 
   />)
 
@@ -26,7 +26,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              {this.renderQuotes()}
+              {this.renderQuotes(this.props)}
               {/*
                 TODO:
 
@@ -54,13 +54,31 @@ const mapStateToProps = (state) => {
 //   }, dispatch) 
 // }
 
+// const mapDispatchToProps = dispatch => {
+//   debugger 
+//   return {
+//     upvoteQuote: (id) => dispatch({upvoteQuote(id)}),
+//     downvoteQuote: (id) => dispatch(downvoteQuote(id)),
+//     removeQuote: (id) => dispatch(removeQuote(id))
+//   }
+// }
+
 const mapDispatchToProps = dispatch => {
   return {
-    upvoteQuote: (id) => dispatch(upvoteQuote(id)),
-    downvoteQuote: (id) => dispatch(downvoteQuote(id)),
-    removeQuote: (id) => dispatch(removeQuote(id))
-  }
-}
+    upvoteQuote: id => dispatch({
+      type: 'UPVOTE_QUOTE',
+      quoteId: id
+    }),
+    downvoteQuote: id => dispatch({
+      type: 'DOWNVOTE_QUOTE',
+      quoteId: id
+    }),
+    removeQuote: id => dispatch({
+      type: 'REMOVE_QUOTE',
+      quoteId: id
+    }),
+  }//return
+}//mapDispatchToProps
 
 //add arguments to connect as needed
 export default connect(mapStateToProps, mapDispatchToProps)(Quotes);

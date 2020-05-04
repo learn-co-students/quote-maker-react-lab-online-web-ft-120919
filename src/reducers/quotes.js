@@ -13,17 +13,28 @@ export default (state = [], action) => {
       return [...state.slice(0, idx), ...state.slice(idx + 1)]
     
     case 'UPVOTE_QUOTE':
-      console.log("inside upvoteQuote")
-      matchQuote = state.find( quote => quote.id === action.quoteId )
-      matchQuote.votes = matchQuote.votes + 1
-      return state 
+      idx = state.findIndex(quote => quote.id === action.quoteId)
+      matchQuote = state[idx]
+
+      return [
+        ...state.slice(0, idx),
+        Object.assign({}, matchQuote, { votes: matchQuote.votes += 1 }),
+        ...state.slice(idx + 1)
+      ]
     
     case 'DOWNVOTE_QUOTE':
-      matchQuote = state.find( quote => quote.id === action.quoteId )
-      if (matchQuote.votes > 0) {
-        matchQuote.votes = matchQuote.votes - 1
+      idx = state.findIndex(quote => quote.id === action.quoteId)
+      matchQuote = state[idx]
+
+      if ( matchQuote.votes > 0 ){
+      return [
+        ...state.slice(0, idx),
+        Object.assign({}, matchQuote, { votes: matchQuote.votes -= 1 }),
+        ...state.slice(idx + 1)
+      ]
+      } else {
+        return state
       }
-      return state
 
     default:
       return state

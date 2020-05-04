@@ -1,7 +1,7 @@
 import React from 'react';
 
 const QuoteCard = (props) => {
-  console.log(props.quote.id)
+  console.log(props)
   return(
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
@@ -15,8 +15,8 @@ const QuoteCard = (props) => {
       </div>
       <div className="float-right">
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-          {/* <button onClick={() => dispatch({ type: 'UPVOTE_QUOTE' quoteId: props.quote.id})} */}
-          <button onClick={() => props.upvoteQuote(props.quote.id)} */}
+          {/* <button onClick={() => dispatch({ type: 'UPVOTE_QUOTE', quoteId: props.quote.id})} */}
+          <button onClick={() => props.upvoteQuote(props.quote.id)} 
             type="button"
             className="btn btn-primary"
           >
@@ -28,7 +28,7 @@ const QuoteCard = (props) => {
           >
             Downvote
           </button>
-          <button onClick={() => props.downvoteQuote(props.quote.id)}
+          <button onClick={() => props.removeQuote(props.quote.id)}
             type="button"
             className="btn btn-danger"
           >
