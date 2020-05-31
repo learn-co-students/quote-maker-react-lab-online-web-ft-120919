@@ -1,12 +1,21 @@
 import React from 'react';
 
+const QuoteCard = (props) =>{
+  upvoteOnClick = event => {
+    this.props.upvoteQuote() 
+  }
+  
+  upvoteOnClick = event => {
+    this.props.downvoteQuote() 
+  }
+  
 
-const QuoteCard = (props) =>
+return (
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
-        {props.quote.content}
+          {props.quote.content}
            <footer>- author <cite title="Source Title">{props.quote.author}</cite></footer> 
         </blockquote>
       </div>
@@ -15,30 +24,30 @@ const QuoteCard = (props) =>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={()=> props.upvoteQuote(props.quote.id)}
+            onClick={this.upvoteOnClick}>
           >
             Upvote
           </button>
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={()=> props.downvoteQuote(props.quote.id)}
+            onClick={this.downvoteOnClick}>
           >
             Downvote
           </button>
           <button
             type="button"
             className="btn btn-danger"
-            onClick={()=> props.removeQuote(props.quote.id)}
           >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div>Votes: {props.quote.votes}</div>
+       <div>Votes: {props.quote.votes}</div>
       </div>
     </div>
-  </div>;
+  </div>);
+
+}
+
 
 export default QuoteCard;
-
-

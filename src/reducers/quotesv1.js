@@ -1,8 +1,10 @@
 export default (state = [], action) => {
+  return state;
+}
+function quote (state = [], action) {
   let idx;
-  // this returns it back to the store in redux (global store's state object)
   switch (action.type) {
-      case("ADD_QUOTE"):
+      case "ADD_QUOTE":
           return [...state, action.quote];
       case "REMOVE_QUOTE":
           idx = state.findIndex(q => q.id  === action.quoteId)
@@ -13,9 +15,7 @@ export default (state = [], action) => {
           return state;
       case "DOWNVOTE_QUOTE":
             idx = state.findIndex(q => q.id  === action.quoteId)
-            if (state[idx].votes>0) {
-              state[idx].votes = state[idx].votes-1
-            }
+            state[idx].votes = state[idx].votes-1
           return state;
       default:
           return state;
